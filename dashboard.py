@@ -15,7 +15,7 @@ import io
 # Page configuration
 st.set_page_config(
     page_title="8-K Item Analysis Dashboard",
-    page_layout="wide",
+    layout="wide",
     initial_sidebar_state="expanded"
 )
 
