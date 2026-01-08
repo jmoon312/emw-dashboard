@@ -387,36 +387,39 @@ st.subheader("Absolute Returns")
 fig_ar = create_bar_chart('Absolute_Returns', 'Absolute Returns')
 st.plotly_chart(fig_ar, use_container_width=True)
 
-# Download button for charts
+# Download button for charts (requires kaleido and Chrome)
 st.markdown("---")
-col1, col2, col3 = st.columns(3)
+try:
+    col1, col2, col3 = st.columns(3)
 
-with col1:
-    img_bytes_tv = fig_tv.to_image(format="png", width=1200, height=800)
-    st.download_button(
-        label="Download Total Volume Chart",
-        data=img_bytes_tv,
-        file_name="total_volume_chart.png",
-        mime="image/png"
-    )
+    with col1:
+        img_bytes_tv = fig_tv.to_image(format="png", width=1200, height=800)
+        st.download_button(
+            label="Download Total Volume Chart",
+            data=img_bytes_tv,
+            file_name="total_volume_chart.png",
+            mime="image/png"
+        )
 
-with col2:
-    img_bytes_rv = fig_rv.to_image(format="png", width=1200, height=800)
-    st.download_button(
-        label="Download Retail Volume Chart",
-        data=img_bytes_rv,
-        file_name="retail_volume_chart.png",
-        mime="image/png"
-    )
+    with col2:
+        img_bytes_rv = fig_rv.to_image(format="png", width=1200, height=800)
+        st.download_button(
+            label="Download Retail Volume Chart",
+            data=img_bytes_rv,
+            file_name="retail_volume_chart.png",
+            mime="image/png"
+        )
 
-with col3:
-    img_bytes_ar = fig_ar.to_image(format="png", width=1200, height=800)
-    st.download_button(
-        label="Download Returns Chart",
-        data=img_bytes_ar,
-        file_name="returns_chart.png",
-        mime="image/png"
-    )
+    with col3:
+        img_bytes_ar = fig_ar.to_image(format="png", width=1200, height=800)
+        st.download_button(
+            label="Download Returns Chart",
+            data=img_bytes_ar,
+            file_name="returns_chart.png",
+            mime="image/png"
+        )
+except Exception as e:
+    st.info("💡 Chart downloads require Kaleido and Chrome. You can still interact with the charts above and use your browser's screenshot feature to save them.")
 
 # Footer
 st.markdown("---")
